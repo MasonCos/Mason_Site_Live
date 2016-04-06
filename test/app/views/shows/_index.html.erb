@@ -1,0 +1,40 @@
+  <% @shows.each do |show| %>
+  <div class="col-sm-6 col-sm-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a target="_blank" href="<%= show.show_url %>"><h3><%= show.title %></h3></a>
+      </div>
+      <div class="panel-body">
+        <section class="col-sm-3">
+          <a target="_blank" href="<%= show.venue_link %>"><p><%= show.venue_name %></p></a>
+        </section>
+        <section class="col-sm-3">
+          <p>
+            <%= show.date %>
+          </p>
+        </section>
+        <section class="col-sm-3">
+          <a target="_blank" href="<%= show.ticket_url %>">Tickets</a>
+        </section>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 col-sm-offset-1 show_poster">
+
+    <a href="#poster_modal<%= show.id %>" data-toggle="modal"><img id="poster<%= show.id %>" class="thumbnail" src="<%= show.poster_url %>" alt="show poster" /></a>
+
+    <div id="poster_modal<%= show.id %>" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span><%= show.date %></span>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <img id="large_poster" src="<%= show.poster_url %>" alt="large show poster" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
